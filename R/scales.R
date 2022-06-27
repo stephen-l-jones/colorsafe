@@ -32,7 +32,7 @@ scale_color_colorsafe_continuous <- function (
     hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
 ) {
   scale_colour_colorsafe_continuous(
-    name = name,
+    hue = hue,
     chroma = chroma,
     grayscale_safe = grayscale_safe,
     reverse = reverse,
@@ -110,7 +110,7 @@ scale_color_colorsafe_binned <- function (
     hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
 ) {
   scale_colour_colorsafe_binned(
-    name = name,
+    hue = hue,
     chroma = chroma,
     grayscale_safe = grayscale_safe,
     reverse = reverse,
