@@ -14,7 +14,7 @@ scale_fill_colorsafe_continuous <- function (
 }
 
 scale_colour_colorsafe_continuous <- function (
-    hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE
 ) {
   ggplot2::continuous_scale(
     "colour", "colorsafe_continuous",
@@ -29,61 +29,62 @@ scale_colour_colorsafe_continuous <- function (
 }
 
 scale_color_colorsafe_continuous <- function (
-    hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE
 ) {
   scale_colour_colorsafe_continuous(
-    hue = hue,
-    chroma = chroma,
+    ...,
+    hue     = hue,
+    chroma  = chroma,
     grayscale_safe = grayscale_safe,
-    reverse = reverse,
-    ...
+    reverse = reverse
   )
 }
 
 scale_fill_colorsafe_discrete <- function (
-    name = "Set 1.5", chroma = "high", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., name = "Set 1.5", chroma = "high", grayscale_safe = FALSE, reverse = FALSE
 ) {
   ggplot2::discrete_scale("fill", "colorsafe_discrete", colorsafe(
-    name   = name,
-    chroma = chroma,
+    name    = name,
+    chroma  = chroma,
     grayscale_safe = grayscale_safe,
     reverse = reverse,
     ...
-  ))
+  ), ...)
 }
 
 scale_colour_colorsafe_discrete <- function (
-    name = "Set 1.5", chroma = "high", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., name = "Set 1.5", chroma = "high", grayscale_safe = FALSE, reverse = FALSE
 ) {
   ggplot2::discrete_scale("colour", "colorsafe_discrete", colorsafe(
-    name   = name,
-    chroma = chroma,
+    name    = name,
+    chroma  = chroma,
     grayscale_safe = grayscale_safe,
     reverse = reverse,
     ...
-  ))
+  ), ...)
 }
 
 scale_color_colorsafe_discrete <- function (
-    name = "Set 1.5", chroma = "high", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., name = "Set 1.5", chroma = "high", grayscale_safe = FALSE, reverse = FALSE
 ) {
   scale_colour_colorsafe_discrete(
-    name = name,
-    chroma = chroma,
+    ...,
+    name    = name,
+    chroma  = chroma,
     grayscale_safe = grayscale_safe,
     reverse = reverse,
-    ...
+
   )
 }
 
 scale_fill_colorsafe_binned <- function (
-    hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE
 ) {
   ggplot2::binned_scale(
     "fill", "colorsafe_binned",
     scales::gradient_n_pal(colorsafe_palette(
-      name   = hue,
-      chroma = chroma,
+      name    = hue,
+      chroma  = chroma,
       grayscale_safe = grayscale_safe,
       reverse = reverse,
       ...)),
@@ -92,13 +93,13 @@ scale_fill_colorsafe_binned <- function (
 }
 
 scale_colour_colorsafe_binned <- function (
-    hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE
 ) {
   ggplot2::binned_scale(
     "colour", "colorsafe_binned",
     scales::gradient_n_pal(colorsafe_palette(
-      name   = hue,
-      chroma = chroma,
+      name    = hue,
+      chroma  = chroma,
       grayscale_safe = grayscale_safe,
       reverse = reverse,
       ...)),
@@ -107,7 +108,7 @@ scale_colour_colorsafe_binned <- function (
 }
 
 scale_color_colorsafe_binned <- function (
-    hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE, ...
+  ..., hue = "Red", chroma = "variable", grayscale_safe = FALSE, reverse = FALSE
 ) {
   scale_colour_colorsafe_binned(
     hue = hue,
