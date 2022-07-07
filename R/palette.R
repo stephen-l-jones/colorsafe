@@ -51,80 +51,74 @@ discrete_palette <- function(
 
 #' @rdname colorsafe_palette
 #' @description
-#'\code{diverging_palette} returns a two-color diverging palette function.
+#'\code{diverging_palette} returns a two-color diverging palette.
 #' @param hue_pair
 #' Name of a diverging palette.
 #' @examples
 #'
-#' pal <- diverging_palette()(5)
+#' pal <- diverging_palette(5)
 #' colorspace::swatchplot(pal)
-#' pal <- diverging_palette(reverse = TRUE, luminance_range = c(50,97))(5)
+#' pal <- diverging_palette(5, reverse = TRUE, luminance_range = c(50,97))
 #' colorspace::swatchplot(pal)
-#' pal <- diverging_palette("Chartreuse-Magenta", luminance_range = c(40,90))(6)
+#' pal <- diverging_palette(6, "Chartreuse-Magenta", luminance_range = c(40,90))
 #' colorspace::swatchplot(pal, cvd = c("deutan","protan"))
 #' @export
 diverging_palette <- function(
-    hue_pair = "Red-Blue", chroma = "variable",
+    n, hue_pair = "Red-Blue", chroma = "variable",
     reverse = FALSE, luminance_range = c(20, 90), max_chroma = 105
 ) {
   pals <- unique(palette_master[palette_master$type == "diverging", "palette_name"])
   if (!hue_pair %in% pals)
     stop("Diverging palette not found. Must be one of: %s", paste(pals, collapse = ", "))
-  function (n) {
-    colorsafe_palette(hue_pair, n, "variable", FALSE, reverse, luminance_range, max_chroma)
-  }
+  colorsafe_palette(hue_pair, n, "variable", FALSE, reverse, luminance_range, max_chroma)
 }
 
 #' @rdname colorsafe_palette
 #' @description
-#'\code{qualitative_palette} returns a multi-hue qualitative palette function.
+#'\code{qualitative_palette} returns a multi-hue qualitative palette.
 #' @param name
 #' Name of a qualitative palette.
 #' @examples
 #'
-#' pal <- qualitative_palette()(5)
+#' pal <- qualitative_palette(5)
 #' colorspace::swatchplot(pal)
-#' pal <- qualitative_palette("Set 2.5")(5)
+#' pal <- qualitative_palette(5, "Set 2.5")
 #' colorspace::swatchplot(pal)
-#' pal <- qualitative_palette(chroma = "low", grayscale_safe = TRUE)(5)
+#' pal <- qualitative_palette(5, chroma = "low", grayscale_safe = TRUE)
 #' colorspace::swatchplot(pal, cvd = c("deutan","protan","desaturate"))
 #' @export
 qualitative_palette <- function(
-  name = "Set 1.5", chroma = c("high","low","variable"), grayscale_safe = FALSE,
+  n, name = "Set 1.5", chroma = c("high","low","variable"), grayscale_safe = FALSE,
   reverse = FALSE
 ) {
   pals <- unique(palette_master[palette_master$type == "qualitative", "palette_name"])
   if (!name %in% pals)
     stop("Qualitative palette not found. Must be one of: %s", paste(pals, collapse = ", "))
-  function (n) {
-    colorsafe_palette(name, n, chroma, grayscale_safe, reverse)
-  }
+  colorsafe_palette(name, n, chroma, grayscale_safe, reverse)
 }
 
 #' @rdname colorsafe_palette
 #' @description
-#'\code{sequential_palette} returns a single-hue sequential palette function.
+#'\code{sequential_palette} returns a single-hue sequential palette.
 #' @param hue
 #' Name of a seqential palette.
 #' @examples
 #'
-#' pal <- sequential_palette()(4)
+#' pal <- sequential_palette(4)
 #' colorspace::swatchplot(pal)
-#' pal <- sequential_palette(chroma = "variable", luminance_range = c(50,97))(4)
+#' pal <- sequential_palette(4, chroma = "variable", luminance_range = c(50,97))
 #' colorspace::swatchplot(pal)
-#' pal <- sequential_palette(chroma = "low")(4)
+#' pal <- sequential_palette(4, chroma = "low")
 #' colorspace::swatchplot(pal)
 #' @export
 sequential_palette <- function(
-    hue = "Red", chroma = c("high","low","variable"), grayscale_safe = FALSE,
+    n, hue = "Red", chroma = c("high","low","variable"), grayscale_safe = FALSE,
     reverse = FALSE, luminance_range = c(20, 90), max_chroma = 105
 ) {
   pals <- unique(palette_master[palette_master$type == "sequential", "palette_name"])
   if (!hue %in% pals)
     stop("Sequential palette not found. Must be one of: %s", paste(pals, collapse = ", "))
-  function (n) {
-    colorsafe_palette(hue, n, chroma, grayscale_safe, reverse, luminance_range, max_chroma)
-  }
+  colorsafe_palette(hue, n, chroma, grayscale_safe, reverse, luminance_range, max_chroma)
 }
 
 #' @rdname colorsafe_palette
@@ -136,7 +130,7 @@ sequential_palette <- function(
 #' @examples
 #'
 #' names(palettes(type = "diverging", chroma = "variable"))
-#' palettes(5, type = "qualitative", grayscale_safe = TRUE)
+#' palettes(type = "qualitative", grayscale_safe = TRUE)
 #' @export
 palettes <- function(
   n, type = c("qualitative","sequential","diverging"), chroma = c("high","low","variable"),

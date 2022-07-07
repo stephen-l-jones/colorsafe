@@ -29,6 +29,7 @@ discrete_palette(
 )
 
 diverging_palette(
+  n,
   hue_pair = "Red-Blue",
   chroma = "variable",
   reverse = FALSE,
@@ -37,6 +38,7 @@ diverging_palette(
 )
 
 qualitative_palette(
+  n,
   name = "Set 1.5",
   chroma = c("high", "low", "variable"),
   grayscale_safe = FALSE,
@@ -44,6 +46,7 @@ qualitative_palette(
 )
 
 sequential_palette(
+  n,
   hue = "Red",
   chroma = c("high", "low", "variable"),
   grayscale_safe = FALSE,
@@ -97,11 +100,11 @@ A color palette function, palette, or list of palettes (see description).
 
 \code{discrete_palette} returns a palette function for discrete scales.
 
-\code{diverging_palette} returns a two-color diverging palette function.
+\code{diverging_palette} returns a two-color diverging palette.
 
-\code{qualitative_palette} returns a multi-hue qualitative palette function.
+\code{qualitative_palette} returns a multi-hue qualitative palette.
 
-\code{sequential_palette} returns a single-hue sequential palette function.
+\code{sequential_palette} returns a single-hue sequential palette.
 
 \code{palettes} returns a list of available palettes.
 }
@@ -109,27 +112,27 @@ A color palette function, palette, or list of palettes (see description).
 pal <- colorsafe_palette("Paired 6")
 colorspace::swatchplot(pal)
 
-pal <- diverging_palette()(5)
+pal <- diverging_palette(5)
 colorspace::swatchplot(pal)
-pal <- diverging_palette(reverse = TRUE, luminance_range = c(50,97))(5)
+pal <- diverging_palette(5, reverse = TRUE, luminance_range = c(50,97))
 colorspace::swatchplot(pal)
-pal <- diverging_palette("Chartreuse-Magenta", luminance_range = c(40,90))(6)
+pal <- diverging_palette(6, "Chartreuse-Magenta", luminance_range = c(40,90))
 colorspace::swatchplot(pal, cvd = c("deutan","protan"))
 
-pal <- qualitative_palette()(5)
+pal <- qualitative_palette(5)
 colorspace::swatchplot(pal)
-pal <- qualitative_palette("Set 2.5")(5)
+pal <- qualitative_palette(5, "Set 2.5")
 colorspace::swatchplot(pal)
-pal <- qualitative_palette(chroma = "low", grayscale_safe = TRUE)(5)
+pal <- qualitative_palette(5, chroma = "low", grayscale_safe = TRUE)
 colorspace::swatchplot(pal, cvd = c("deutan","protan","desaturate"))
 
-pal <- sequential_palette()(4)
+pal <- sequential_palette(4)
 colorspace::swatchplot(pal)
-pal <- sequential_palette(chroma = "variable", luminance_range = c(50,97))(4)
+pal <- sequential_palette(4, chroma = "variable", luminance_range = c(50,97))
 colorspace::swatchplot(pal)
-pal <- sequential_palette(chroma = "low")(4)
+pal <- sequential_palette(4, chroma = "low")
 colorspace::swatchplot(pal)
 
 names(palettes(type = "diverging", chroma = "variable"))
-palettes(5, type = "qualitative", grayscale_safe = TRUE)
+palettes(type = "qualitative", grayscale_safe = TRUE)
 }
